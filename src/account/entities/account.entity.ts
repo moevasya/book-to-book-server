@@ -16,9 +16,6 @@ export class Account {
   phone: string;
 
   @Field(() => String)
-  username: string;
-
-  @Field(() => String)
   password: string;
 
   @Field(() => Upload, { nullable: true })

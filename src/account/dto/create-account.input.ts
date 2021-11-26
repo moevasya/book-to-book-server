@@ -13,9 +13,6 @@ export class CreateAccountInput {
   phone?: string;
 
   @Field(() => String, { nullable: true })
-  username?: string;
-
-  @Field(() => String, { nullable: true })
   password?: string;
 
   @Field(() => ID, { nullable: true })

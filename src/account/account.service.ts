@@ -23,8 +23,7 @@ export class AccountService {
       const accountCheck = await this.accountModel.findOne({
         $or: [
           { email: createAccountInput.email },
-          { phone: createAccountInput.email },
-          { username: createAccountInput.email },
+          { phone: createAccountInput.phone },
         ],
       });
 
@@ -103,19 +102,12 @@ export class AccountService {
             $nin: ['', null],
           },
         },
-        {
-          username: {
-            $exists: true,
-            $eq: (emailPhoneOrUsername || '').toLowerCase(),
-            $nin: ['', null],
-          },
-        },
       ],
     });
   }
 
   async login({ password, ...loginInput }: LoginInput) {
-    const account = await this.findAccount(loginInput.emailPhoneOrUsername);
+    const account = await this.findAccount(loginInput.emailOrPhone);
 
     if (!account) {
       throw new BadRequestException(

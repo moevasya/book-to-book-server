@@ -10,14 +10,11 @@ export class Account {
   @Prop()
   name: string;
 
-  @Prop()
+  @Prop({ unique: true })
   email: string;
 
-  @Prop()
+  @Prop({ unique: true })
   phone: string;
-
-  @Prop()
-  username: string;
 
   @Prop()
   password: string;
